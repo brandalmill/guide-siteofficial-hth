@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雷火电竞 · 简明指南与访问提醒</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f2f6f5;
+      color: #1a2e2c;
+      line-height: 1.7;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .page-grid {
+      max-width: 840px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* 网格卡片氛围 */
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(2px);
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: 0 6px 20px rgba(0, 60, 50, 0.06);
+      border: 1px solid rgba(0, 120, 110, 0.12);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 28px rgba(0, 100, 90, 0.10);
+    }
+
+    /* 蓝绿色点缀 */
+    .accent {
+      color: #0f766e;
+    }
+
+    .accent-bg {
+      background: #0f766e;
+      color: white;
+    }
+
+    .tagline {
+      display: inline-block;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      background: #d6f0ee;
+      color: #0b5f58;
+      padding: 4px 14px;
+      border-radius: 40px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    /* 标题层次 */
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-top: 4px;
+      color: #0a2f2b;
+    }
+
+    h1 .highlight {
+      color: #0f766e;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 14px;
+      border-left: 5px solid #0f766e;
+      padding-left: 16px;
+      color: #12433e;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: #1e3d39;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #0f766e;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    a:hover {
+      border-bottom: 1px solid #0f766e;
+      color: #0b5f58;
+    }
+
+    /* 引用块 / 提示卡片 */
+    .callout {
+      background: #e6f3f1;
+      padding: 20px 22px;
+      border-radius: 20px;
+      border-left: 5px solid #0f766e;
+      margin: 18px 0 10px;
+      font-style: normal;
+      color: #11322e;
+    }
+
+    .callout strong {
+      color: #0b5f58;
+    }
+
+    .faq-item {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.12);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #0b5f58;
+      margin-bottom: 4px;
+    }
+
+    .faq-a {
+      padding-left: 12px;
+      color: #1e3d39;
+    }
+
+    .meta-note {
+      font-size: 0.9rem;
+      color: #4f6b67;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-line {
+      text-align: center;
+      padding: 20px 0 8px;
+      color: #4e6b66;
+      font-size: 0.9rem;
+    }
+
+    /* 移动端 */
+    @media (max-width: 520px) {
+      body {
+        padding: 16px 12px;
+      }
+
+      .card {
+        padding: 20px 16px;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      .tagline {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* 点缀网格背景 (微妙的装饰) */
+    .bg-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: -2;
+      opacity: 0.2;
+      background-image:
+        linear-gradient(rgba(15, 118, 110, 0.15) 1px, transparent 1px),
+        linear-gradient(to right, rgba(15, 118, 110, 0.1) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-pattern"></div>
+
+<div class="page-grid">
+
+  <!-- 文章标题 + 导语 -->
+  <div class="card">
+    <span class="tagline">📘 简明指南 · 生活向</span>
+    <h1>从零开始了解 <span class="highlight">雷火电竞</span></h1>
+    <p style="font-size: 1.1rem; margin-top: 8px; color: #1a403b;">
+      如果你刚接触在线娱乐平台，或者想换个环境试试手，这篇短文或许能帮你省去一些摸索的功夫。没有复杂的教程，只有关于 <a href="https://cn-thunderfire.com">雷火电竞</a> 的真实感受与实用提醒。
+    </p>
+  </div>
+
+  <!-- 正文段落：内容切入 -->
+  <div class="card">
+    <h2>先聊聊「怎么选」</h2>
+    <p>
+      很多人第一次接触这类平台时，总会被满屏的广告和促销搞晕。其实你只需要抓住三个核心：<strong>界面是否顺手、出入金是否透明、客服响应是否及时</strong>。简单来说，就是别让繁琐的操作打断你的体验。
+    </p>
+    <p>
+      拿 <a href="https://cn-thunderfire.com">雷火电竞</a> 举例，它的新用户引导做得比较克制——没有一上来就弹窗轰炸，而是给你一个清晰的目录，让你自己决定想看什么。这种“留白”感，在如今的网络环境里反而显得难得。而且整体色调清爽，蓝绿色调看久了也不累。
+    </p>
+    <p>
+      当然，这只是第一印象。真正决定是否留下的，还是日常使用中的细节：比赛更新快不快，数据是否准确，以及遇到疑问时能不能找到人帮忙。据我观察，雷火电竞的在线支持通常能在几分钟内回应，这点值得肯定。
+    </p>
+  </div>
+
+  <!-- 引用提示 / 访问提醒 -->
+  <div class="card">
+    <h2>几句实在的提醒</h2>
+    <div class="callout">
+      <strong>🟢 访问前请注意：</strong> 无论你选择哪个平台，都建议先花十分钟熟悉规则和条款。特别是关于提现周期、流水要求这些容易被跳过的地方。另外，尽量使用稳定的网络环境，避免因连接波动造成不必要的损失。
+    </div>
+    <p style="margin-top: 8px;">
+      如果你打算从 <a href="https://cn-thunderfire.com">雷火电竞</a> 开始，不妨先注册一个账号，逛逛社区里的讨论区。老玩家分享的经验往往比官方说明更接地气。但也要留个心眼：任何声称“稳赚”的信息都要警惕，保持自己的判断。
+    </p>
+  </div>
+
+  <!-- 场景延伸 + FAQ 摘要 -->
+  <div class="card">
+    <h2>常见小问题（FAQ 摘要）</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">📌 平时用手机浏览方便吗？</div>
+      <div class="faq-a">完全没问题。页面自适应用得不错，按钮大小、文字间距都针对移动端做过优化，不用频繁缩放。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">📌 需要下载额外的软件或插件吗？</div>
+      <div class="faq-a">不需要。直接通过浏览器访问即可。不过建议保持浏览器为最新版本，体验会更流畅。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">📌 如果遇到页面卡顿或打不开怎么办？</div>
+      <div class="faq-a">先检查本地网络，尝试刷新或稍后再试。如果问题持续，可以通过站内客服反馈，通常反馈后处理速度很快。</div>
+    </div>
+
+    <div class="meta-note" style="margin-top: 16px; padding-top: 10px; border-top: 1px solid rgba(15,118,110,0.15);">
+      ⚡ 以上内容基于日常使用经验整理，仅供你参考。每个人的偏好不同，建议亲自体验后再做决定。
+    </div>
+  </div>
+
+  <!-- 结尾访问句（自然融入链接） -->
+  <div class="card" style="text-align: center; padding: 20px 16px;">
+    <p style="font-size: 1.05rem;">
+      如果你对 <a href="https://cn-thunderfire.com">雷火电竞</a> 心生好奇，不妨亲自去感受一下它的操作节奏与氛围。用之前记得把上面提到的提醒在脑子里过一遍，比什么都管用。
+    </p>
+    <p class="meta-note" style="margin-top: 14px;">
+      — 希望这篇文章能让你少走一段弯路。
+    </p>
+  </div>
+
+  <div class="footer-line">
+    <span>由一位普通用户整理 · 仅供浏览参考</span>
+  </div>
+
+</div>
+
+</body>
+</html>
