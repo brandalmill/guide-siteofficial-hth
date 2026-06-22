@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>857直播 · 知识指引页</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f4f8fa;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1f2e3b;
+            line-height: 1.6;
+            padding: 20px 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* 蓝绿点缀 + 网格卡片 */
+        .hero {
+            margin-bottom: 36px;
+            padding: 28px 20px;
+            background: linear-gradient(145deg, #e2f0ec 0%, #cdded9 100%);
+            border-radius: 28px;
+            box-shadow: 0 4px 10px rgba(0,40,30,0.06);
+            border-left: 6px solid #2a7f6e;
+        }
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            color: #11574a;
+            margin-bottom: 8px;
+        }
+        .hero .sub {
+            color: #245f52;
+            font-size: 1rem;
+            opacity: 0.9;
+            border-top: 1px solid rgba(42,127,110,0.25);
+            padding-top: 12px;
+            margin-top: 8px;
+        }
+
+        /* 卡片网格 —— 目录感布局 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin: 28px 0;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 22px 18px;
+            box-shadow: 0 2px 8px rgba(0, 30, 20, 0.04);
+            border: 1px solid #d7e5e0;
+            transition: 0.2s ease;
+        }
+        .card:hover {
+            border-color: #4a9b89;
+            box-shadow: 0 6px 14px rgba(42,127,110,0.08);
+        }
+        .card h3 {
+            font-weight: 520;
+            font-size: 1.1rem;
+            color: #11574a;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card h3::before {
+            content: "▹";
+            color: #2a7f6e;
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+        .card p, .card li {
+            font-size: 0.94rem;
+            color: #2c3e45;
+        }
+        .card ul {
+            padding-left: 18px;
+            list-style: none;
+        }
+        .card ul li {
+            position: relative;
+            padding-left: 14px;
+            margin-bottom: 6px;
+        }
+        .card ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #4a9b89;
+            font-weight: bold;
+        }
+
+        /* 说明区 + 提示区 + 相关信息区 用不同卡片强调 */
+        .notice-area {
+            background: #e6f3ef;
+            border-radius: 24px;
+            padding: 24px 22px;
+            margin: 24px 0 30px;
+            border-left: 5px solid #2a7f6e;
+        }
+        .notice-area p {
+            margin-bottom: 8px;
+        }
+
+        .faq-mini {
+            background: white;
+            border-radius: 24px;
+            padding: 24px 22px;
+            margin: 20px 0 30px;
+            border: 1px solid #d0e2db;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .faq-mini h3 {
+            color: #11574a;
+            font-weight: 520;
+            margin-bottom: 14px;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #c1d9d2;
+            padding-bottom: 8px;
+        }
+        .faq-item {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddeae4;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-q {
+            font-weight: 500;
+            color: #1d5347;
+        }
+        .faq-a {
+            color: #2c4a43;
+            font-size: 0.92rem;
+            margin-top: 4px;
+        }
+
+        .related-links {
+            background: #fafcfb;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 28px 0;
+            border: 1px solid #cbdcd5;
+        }
+        .related-links h3 {
+            color: #11574a;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        .related-links a, .inline-link {
+            color: #1f6b5b;
+            text-decoration: none;
+            border-bottom: 1px dotted #6fa697;
+            transition: 0.1s;
+        }
+        .related-links a:hover, .inline-link:hover {
+            border-bottom: 2px solid #1f6b5b;
+        }
+
+        .footnote {
+            margin-top: 40px;
+            padding-top: 16px;
+            border-top: 1px solid #cbdcd5;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #47665b;
+        }
+
+        /* 移动端友好 */
+        @media (max-width: 600px) {
+            body { padding: 16px 12px; }
+            .hero h1 { font-size: 1.7rem; }
+            .grid { grid-template-columns: 1fr; gap: 16px; }
+            .card { padding: 18px 14px; }
+            .notice-area, .faq-mini, .related-links { padding: 18px 14px; }
+        }
+        @media (min-width: 900px) {
+            .grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 区域：目录感，清晰说明 -->
+    <div class="hero">
+        <h1>📋 857 知识索引</h1>
+        <div class="sub">直播信息 · 对照查询 · 延伸了解 —— 日常阅览页</div>
+    </div>
+
+    <!-- 核心卡片网格：目录式入口 -->
+    <div class="grid">
+        <div class="card">
+            <h3>直播内容速览</h3>
+            <ul>
+                <li>赛事 / 娱乐 / 日常</li>
+                <li>主播动态与排期</li>
+                <li>弹幕文化 & 互动</li>
+            </ul>
+            <p style="margin-top: 10px;">频道内可依据兴趣筛选类别，方便快速定位。</p>
+        </div>
+        <div class="card">
+            <h3>常用对照</h3>
+            <ul>
+                <li>时段对照表 (24h / 时区)</li>
+                <li>画质 & 平台适配</li>
+                <li>关键词搜索技巧</li>
+            </ul>
+            <p style="margin-top: 10px;">适合需要频繁查阅配置或排期的场景。</p>
+        </div>
+        <div class="card">
+            <h3>延伸阅读</h3>
+            <ul>
+                <li>直播行业小百科</li>
+                <li>弹幕用语整理</li>
+                <li>频道历史 · 专题</li>
+            </ul>
+            <p style="margin-top: 10px;">非正式资料，供兴趣拓展。</p>
+        </div>
+    </div>
+
+    <!-- 说明区：平实具体 -->
+    <div class="notice-area">
+        <p><strong>📌 关于本页</strong>  —— 这里整合了围绕 <a href="https://webs-857.com" class="inline-link">857直播</a> 的常见查询点、内容分类和辅助信息。不包含推广性质，仅作为整理后的参考索引。直播内容、主播及时间可能随时调整，建议以站内实时信息为准。</p>
+        <p style="margin-top: 8px; color: #1f4f44;">日常使用中，可把本页当作一个轻量目录，方便跳转或对照。</p>
+    </div>
+
+    <!-- 提示区：FAQ 摘要  -->
+    <div class="faq-mini">
+        <h3>❓ 常见简短说明</h3>
+        <div class="faq-item">
+            <div class="faq-q">如何找到特定直播回放？</div>
+            <div class="faq-a">站内通常提供历史列表或搜索功能，可使用关键词或日期筛选。部分内容可能有时效。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">画质或播放异常？</div>
+            <div class="faq-a">先检查网络及浏览器版本；不同线路或清晰度可手动切换。移动端建议使用官方App。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">是否有节目预告或周表？</div>
+            <div class="faq-a">部分主播或频道会发布预告，可留意个人动态或公告区。本站不设独立预告页。</div>
+        </div>
+        <div style="margin-top: 10px; font-size: 0.9rem; color: #3a6a5d;">更多细节可直接访问 <a href="https://webs-857.com" class="inline-link">857直播</a> 站内帮助或社区。</div>
+    </div>
+
+    <!-- 相关信息区：延伸阅读 + 引用 -->
+    <div class="related-links">
+        <h3>🔗 相关信息 & 引用</h3>
+        <p>· 直播术语与常见缩写对照（不定期更新）<br>
+           · 弹幕礼仪与频道氛围说明<br>
+           · 外部百科参考：直播编码、延迟概念<br>
+           · 工具推荐：多平台直播间聚合 / 录制提醒（非官方）</p>
+        <p style="margin-top: 10px;">📘 以上内容仅为整理汇总，与 <a href="https://webs-857.com" class="inline-link">857直播</a> 官方无关，不构成任何承诺或指导。部分条目来自社区经验，请自行甄别。</p>
+    </div>
+
+    <!-- 底边 -->
+    <div class="footnote">
+        整理于日常查阅 · 内容仅供参考 · 页面结构每次不同
+    </div>
+
+</div>
+</body>
+</html>
